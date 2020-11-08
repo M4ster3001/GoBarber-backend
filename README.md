@@ -9,4 +9,4 @@
         - criar a model e a migrations dos usuarios[x]
         - criar o relacionamento nos models[x]
         - adicionar a criação de usuarios[x]
-        - criptografar as senhas
+        - criptografar as senhas[x]

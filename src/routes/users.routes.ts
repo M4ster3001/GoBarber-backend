@@ -15,6 +15,14 @@ usersRouter.post('/', async (request: Request, response: Response) => {
             password,
         });
 
+        const userWithoutPassword = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            creat_at: user.create_at,
+            update_at: user.update_at,
+        };
+
         return response.json(user);
     } catch (err) {
         return response.status(400).json({ erro: err.message });
