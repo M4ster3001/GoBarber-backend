@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "typeorm:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run",
+    "typeorm:rvt": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
@@ -29,6 +32,8 @@
     "cors": "^2.8.5",
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
+    "pg": "^8.4.2",
+    "typeorm": "^0.2.29",
     "uuidv4": "^6.2.4"
   }
 }

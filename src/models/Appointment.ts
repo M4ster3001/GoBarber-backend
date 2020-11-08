@@ -1,10 +1,5 @@
 import { uuid } from 'uuidv4';
 
-interface Appointment {
-    provider: string;
-    date: Date;
-}
-
 class Appointment {
     id: string;
 
