@@ -9,7 +9,8 @@
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "typeorm:run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run",
-    "typeorm:rvt": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert"
+    "typeorm:rvt": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert",
+    "typeorm:ct": "ts-node-dev ./node_modules/typeorm/cli.js migration:create -n"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
