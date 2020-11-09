@@ -10,5 +10,5 @@
         - criar o relacionamento nos models[x]
         - adicionar a criação de usuarios[x]
         - criptografar as senhas[x]
-        - comparando email e senha para o login[x]
-        - autenticando as rotas com JWT[]
+        - comparar email e senha para o login[x]
+        - autenticar as rotas com JWT[x]
