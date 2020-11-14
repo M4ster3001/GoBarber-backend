@@ -12,3 +12,5 @@
         - criptografar as senhas[x]
         - comparar email e senha para o login[x]
         - autenticar as rotas com JWT[x]
+        - configurando o multer [x]
+        - adicionando na rota [x]

@@ -37,7 +37,9 @@ usersRouter.patch(
     '/avatar',
     ensuredAuthenticated,
     upload.single('file'),
-    async (request: Request, response: Response) => {},
+    async (request: Request, response: Response) => {
+        return response.json({ message: 'ok' });
+    },
 );
 
 export default usersRouter;
