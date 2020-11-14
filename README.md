@@ -16,3 +16,4 @@
         - adicionando na rota [x]
         - checar se existe a imagem, caso exista deleta e salva a outra [x]
         - alterar no banco [x]
+        - tratamento de erros [x]

@@ -22,7 +22,7 @@ sessionsRouter.post('/', async (request: Request, response: Response) => {
             creat_at: user.create_at,
         });
     } catch (err) {
-        return response.status(400).json({ erro: err.message });
+        return response.status(err.statusCode).json({ erro: err.message });
     }
 });
 
