@@ -14,3 +14,5 @@
         - autenticar as rotas com JWT[x]
         - configurando o multer [x]
         - adicionando na rota [x]
+        - checar se existe a imagem, caso exista deleta e salva a outra [x]
+        - alterar no banco [x]
