@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import Appointment from '../models/Appointment';
+import Appointment from '../infra/typeorm/entities/Appointment';
 
 @EntityRepository(Appointment)
 // Repository seria como se fosse uma função e o <Appointment> seria um parametro
