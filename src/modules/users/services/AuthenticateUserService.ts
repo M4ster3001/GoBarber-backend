@@ -6,6 +6,7 @@ import AppError from '@shared/errors/AppError';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUserRepository from '../repositories/IUsersRepository';
+import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
     email: string;
@@ -16,9 +17,11 @@ interface IResponse {
     user: User;
     token: string;
 }
-
+@injectable()
 class AuthenticateUserService {
-    constructor(private userRepository: IUserRepository){}
+    constructor(
+        @inject('UsersRepository')
+        private userRepository: IUserRepository){}
 
     public async execute({ email, password }: IRequest): Promise<IResponse> {
         const user = await this.userRepository.findByEmail(email);

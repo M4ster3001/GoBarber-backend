@@ -1,5 +1,5 @@
 {
-  "name": "aulaTypeScript",
+  "name": "aulatypescript",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -44,6 +44,7 @@
     "multer": "^1.4.2",
     "pg": "^8.4.2",
     "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.4.0",
     "typeorm": "^0.2.29",
     "uuidv4": "^6.2.4"
   }

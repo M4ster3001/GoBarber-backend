@@ -13,6 +13,8 @@ import uploadConfig from '@config/upload';
 
 import AppError from '@shared/errors/AppError';
 
+import '@shared/container/index';
+
 console.clear();
 
 const PORT = 3333;
