@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import CreateUserService from '@modules/users/services/CreateUsersService';
+import CreateUserService from '@modules/users/services/CreateUserService';
 import { container } from 'tsyringe';
 
 
