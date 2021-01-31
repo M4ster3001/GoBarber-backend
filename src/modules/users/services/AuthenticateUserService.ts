@@ -7,6 +7,7 @@ import AppError from '@shared/errors/AppError';
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUserRepository from '../repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
     email: string;
@@ -21,7 +22,11 @@ interface IResponse {
 class AuthenticateUserService {
     constructor(
         @inject('UsersRepository')
-        private userRepository: IUserRepository){}
+        private userRepository: IUserRepository,
+
+        @inject('HashProvider')
+        private hashProvider: IHashProvider
+        ){}
 
     public async execute({ email, password }: IRequest): Promise<IResponse> {
         const user = await this.userRepository.findByEmail(email);
@@ -30,7 +35,7 @@ class AuthenticateUserService {
             throw new AppError('Usuário/ senha estão incorretos', 401);
         }
 
-        const passwordMatched = await compare(password, user.password);
+        const passwordMatched = await this.hashProvider.compareHash(password, user.password);
 
         if (!passwordMatched) {
             throw new AppError('Usuário/ senha estão incorretos', 401);
