@@ -1,6 +1,7 @@
 // import User from '@modules/users/infra/typeorm/entities/User';
 import IMailProvider from '@shared/container/providers/MailProvider/models/MailProvider';
 import AppError from '@shared/errors/AppError';
+import { resolve } from 'path';
 import { inject, injectable } from 'tsyringe';
 import IUserRepository from '../repositories/IUsersRepository';
 import IUSerTokenRepository from '../repositories/IUserTokensRepository';
@@ -31,7 +32,27 @@ class SendForgotPasswordService {
 
     const { token } = await this.userTokenRepository.generate(user.id);
 
-    await this.mailProvider.sendEmail(email, `Recuperação de senha ${token}`);
+    const forgotPasswordTemplate = resolve(
+      __dirname,
+      '..',
+      'views',
+      'forgot_password.hbs',
+    );
+
+    await this.mailProvider.sendEmail({
+      to: {
+        name: user.name,
+        email: user.email,
+      },
+      subject: '[GoBarber] Recuperação de senha',
+      templateData: {
+        file: forgotPasswordTemplate,
+        variables: {
+          name: user.name,
+          link: `http://localhost:3000/reset?token=${token}`,
+        },
+      },
+    });
   }
 }
 
