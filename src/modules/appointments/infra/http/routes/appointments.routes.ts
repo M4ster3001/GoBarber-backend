@@ -5,7 +5,6 @@ import ensuredAuthenticated from '@modules/users/infra/http/middlewares/ensureAu
 import { container } from 'tsyringe';
 import AppointmentsCTR from '../controllers/AppointmentsCTR';
 
-
 const appointmentsRouter = Router();
 
 const appointmentsCTR = new AppointmentsCTR();
@@ -13,9 +12,9 @@ const appointmentsCTR = new AppointmentsCTR();
 appointmentsRouter.use(ensuredAuthenticated);
 
 // appointmentsRouter.get('/', async (request: Request, response: Response) => {
-    //     return response.json(await appointmentsRepository.find());
-    // });
+//     return response.json(await appointmentsRepository.find());
+// });
 
-    appointmentsRouter.post('/', appointmentsCTR.create);
+appointmentsRouter.post('/', appointmentsCTR.create);
 
 export default appointmentsRouter;

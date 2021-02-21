@@ -6,35 +6,35 @@ import User from '../entities/User';
 
 // Repository seria como se fosse uma função e o <Appointment> seria um parametro
 class UsersRepository implements IUserRepository {
-    private ormRepository: Repository<User>;
+  private ormRepository: Repository<User>;
 
-    constructor() {
-        this.ormRepository = getRepository(User);
-    }
+  constructor() {
+    this.ormRepository = getRepository(User);
+  }
 
-    public async findByID(id: string): Promise<User | undefined> {
-        const findUser = await this.ormRepository.findOne(id);
+  public async findByID(id: string): Promise<User | undefined> {
+    const findUser = await this.ormRepository.findOne(id);
 
-        return findUser;
-    }
+    return findUser;
+  }
 
-    public async findByEmail(email: string): Promise<User | undefined> {
-        const findUser = await this.ormRepository.findOne({where: {email}});
+  public async findByEmail(email: string): Promise<User | undefined> {
+    const findUser = await this.ormRepository.findOne({ where: { email } });
 
-        return findUser;
-    }
+    return findUser;
+  }
 
-    public async create(userData: ICreateUserDTO): Promise<User>{
-        const user = this.ormRepository.create(userData);
+  public async create(userData: ICreateUserDTO): Promise<User> {
+    const user = this.ormRepository.create(userData);
 
-        await this.ormRepository.save(user);
+    await this.ormRepository.save(user);
 
-        return user;
-    }
+    return user;
+  }
 
-    public async save(user: User): Promise<User> {
-        return this.ormRepository.save(user);
-    }
+  public async save(user: User): Promise<User> {
+    return this.ormRepository.save(user);
+  }
 }
 
 export default UsersRepository;
