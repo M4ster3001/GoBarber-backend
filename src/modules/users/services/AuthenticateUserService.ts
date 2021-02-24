@@ -1,6 +1,4 @@
-import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { getRepository } from 'typeorm';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 
@@ -44,9 +42,11 @@ class AuthenticateUserService {
       throw new AppError('Usuário/ senha estão incorretos', 401);
     }
 
-    const token = sign({}, authConfig.jwt.secret, {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: authConfig.jwt.expiresIn,
+      expiresIn,
     });
 
     return { user, token };

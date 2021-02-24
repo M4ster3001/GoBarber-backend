@@ -1,5 +1,5 @@
 // import User from '@modules/users/infra/typeorm/entities/User';
-import IMailProvider from '@shared/container/providers/MailProvider/models/MailProvider';
+import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
 import AppError from '@shared/errors/AppError';
 import { resolve } from 'path';
 import { inject, injectable } from 'tsyringe';
@@ -39,7 +39,7 @@ class SendForgotPasswordService {
       'forgot_password.hbs',
     );
 
-    await this.mailProvider.sendEmail({
+    await this.mailProvider.sendMail({
       to: {
         name: user.name,
         email: user.email,

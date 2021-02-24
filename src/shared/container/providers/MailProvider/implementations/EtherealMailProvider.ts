@@ -3,7 +3,7 @@ import NodeMailer, { Transporter } from 'nodemailer';
 import { inject, injectable } from 'tsyringe';
 import IMailTemplateProvider from '../../MailTemplateProvider/models/IMailTemplateProvider';
 import ISendMailDTO from '../dtos/ISendMailDTO';
-import IMailProvider from '../models/MailProvider';
+import IMailProvider from '../models/IMailProvider';
 
 interface IMessage {
   to: string;
@@ -37,7 +37,7 @@ export default class EtherealMailProvider implements IMailProvider {
       });
   }
 
-  public async sendEmail({
+  public async sendMail({
     to,
     from,
     subject,
