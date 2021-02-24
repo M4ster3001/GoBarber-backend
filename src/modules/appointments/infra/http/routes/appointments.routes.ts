@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { parseISO } from 'date-fns';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 import ensuredAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import { container } from 'tsyringe';
@@ -17,7 +18,16 @@ appointmentsRouter.use(ensuredAuthenticated);
 //     return response.json(await appointmentsRepository.find());
 // });
 
-appointmentsRouter.post('/', appointmentsCTR.create);
+appointmentsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      provider_id: Joi.string().uuid().required(),
+      date: Joi.date(),
+    },
+  }),
+  appointmentsCTR.create,
+);
 appointmentsRouter.get('/me', providerAppointmentsCTR.index);
 
 export default appointmentsRouter;
