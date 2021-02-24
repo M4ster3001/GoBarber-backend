@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import ShowProfileService from '@modules/users/services/ShowProfileService';
+import { classToClass } from 'class-transformer';
 
 export default class ProfileCTR {
   public async show(request: Request, response: Response): Promise<Response> {
@@ -11,15 +12,7 @@ export default class ProfileCTR {
 
     const user = await showProfile.execute({ user_id });
 
-    const userWithoutPassword = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      created_at: user.create_at,
-      updated_at: user.update_at,
-    };
-
-    return response.json(userWithoutPassword);
+    return response.json(classToClass(user));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -36,14 +29,6 @@ export default class ProfileCTR {
       password,
     });
 
-    const userWithoutPassword = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      creat_at: user.create_at,
-      update_at: user.update_at,
-    };
-
-    return response.json(userWithoutPassword);
+    return response.json(classToClass(user));
   }
 }
