@@ -15,6 +15,7 @@ import AppError from '@shared/errors/AppError';
 import routes from './routes';
 
 import '@shared/container/index';
+import rateLimiter from './middlewares/rateLimiter';
 
 console.clear();
 
@@ -22,6 +23,7 @@ const PORT = 3333;
 
 const app = express();
 
+app.use(rateLimiter);
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder));

@@ -14,10 +14,6 @@ const providerAppointmentsCTR = new ProviderAppointmentsCTR();
 
 appointmentsRouter.use(ensuredAuthenticated);
 
-// appointmentsRouter.get('/', async (request: Request, response: Response) => {
-//     return response.json(await appointmentsRepository.find());
-// });
-
 appointmentsRouter.post(
   '/',
   celebrate({

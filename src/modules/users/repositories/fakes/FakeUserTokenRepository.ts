@@ -15,7 +15,7 @@ class FakeUserTokenRepository implements IUserTokensRepository {
       id: v4(),
       token: v4(),
       user_id,
-      create_at: new Date(),
+      created_at: new Date(),
       updated_at: new Date(),
     });
 

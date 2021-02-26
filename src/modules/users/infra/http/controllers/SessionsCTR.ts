@@ -19,7 +19,7 @@ export default class SessionCTR {
         id: user.id,
         email: user.email,
         name: user.name,
-        creat_at: user.create_at,
+        creat_at: user.created_at,
       },
     });
   }
