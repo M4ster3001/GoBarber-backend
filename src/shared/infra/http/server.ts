@@ -12,6 +12,7 @@ import '@shared/infra/typeorm';
 import uploadConfig from '@config/upload';
 
 import AppError from '@shared/errors/AppError';
+import morgan from 'morgan';
 import routes from './routes';
 
 import '@shared/container/index';
@@ -25,6 +26,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan('combined'));
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(rateLimiter);
 app.use(routes);
